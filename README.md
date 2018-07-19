@@ -28,11 +28,12 @@
 
 # Verify that the kernel is updated :
 8. modinfo uvcvideo | grep "version:"
-# should include realsense string
+# should include 'realsense' string
 
 # before example compilation
 11. sudo apt-get install libglfw3-dev
 
-
-# put inside wrappers cmakelists.txt
+# put inside wrappers cmakelists.txt ~/librealsense-2.12.0/wrappers/opencv
 12. SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+
+
