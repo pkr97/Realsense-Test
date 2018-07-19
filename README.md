@@ -33,6 +33,8 @@
 # before example compilation
 11. sudo apt-get install libglfw3-dev
 
+## @@ Install Opencv 3.4 using the instructions given in OpenCV_3.4_Installation.txt 
+
 # put inside wrappers cmakelists.txt ~/librealsense-2.12.0/wrappers/opencv
 12. SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
