@@ -34,14 +34,27 @@
 9. sudo apt-get install libglfw3-dev
 
 # download the older librealsense directory.
-10. git clone https://github.com/pkr97/Realsense-Test/blob/master/librealsense-2.12.0.zip
+10. git clone https://github.com/IntelRealSense/librealsense/archive/v2.10.3.zip
 
 # Unzip the downloaded file
-11. unzip librealsense-2.12.0.zip
+11. unzip librealsense-2.10.3.zip
 
 ## @@ Install Opencv 3.4 using the instructions given in OpenCV_3.4_Installation.txt 
 
-# put inside wrappers cmakelists.txt ~/librealsense-2.12.0/wrappers/opencv
-12. SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+# compile intel realsense source code
+12. cd librealsense-2.10.3
+ @ @ modify the main CMakelists.txt.
+ 
+ find the line "option(BUILD_CV_EXAMPLES "Build OpenCV examples" OFF)"
+ change to "option(BUILD_CV_EXAMPLES "Build OpenCV examples" ON)"
+
+# Build librealsense source code
+13. mkdir build
+
+# Linking
+14. cmake ..
+
+# Compiling
+15. make -j4
 
 
