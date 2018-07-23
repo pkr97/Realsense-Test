@@ -50,11 +50,12 @@
 
 # Build librealsense source code
 13. mkdir build
+14. cd build
 
 # Linking
-14. cmake ..
+15. cmake ..
 
 # Compiling
-15. make -j4
+16. make -j4
 
 
