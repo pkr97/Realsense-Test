@@ -1,0 +1,59 @@
+# update
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove 
+sudo apt-get autoclean 
+sudo apt-get clean
+sudo apt-get -f install 
+
+# remove these library for fresh installation
+sudo apt-get remove ffmpeg x264 libx264-dev
+
+# install the necessary packages for compiling openCV sources. ignore errors
+sudo apt-get install ocl-icd-libopencl1 build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils
+
+# create opencv directory
+mkdir opencv
+
+# enter 
+cd /opencv/
+
+# download opencv 2.4.8
+wget -O OpenCV-2.4.8.zip https://github.com/opencv/opencv/archive/2.4.8.zip
+
+# install unzip
+sudo apt-get install unzip
+
+# unzip 
+unzip OpenCV-2.4.8.zip
+
+# enter opencv source directort
+cd opencv-2.4.8
+
+# create directory "build"
+mkdir build
+
+# enter build directory
+cd build
+
+# cmake
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D WITH_OPENGL=ON -D WITH_GSTREAMER=ON -D BUILD_EXAMPLES=ON -Wno-dev ..
+
+# make
+make -j$(nproc) # will use all the cores
+
+# install make
+sudo make install
+
+# configure
+sudo sh -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'
+
+# LD config
+sudo ldconfig
+
+# reboot 
+
+# Done!
+
+
+

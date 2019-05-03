@@ -1,0 +1,59 @@
+tar -xvf AstraSDK-v2.0.14-8dd7d5344a-20181210T213031Z-Ubuntu1604.tar.gz 
+
+rename
+
+cd AstraSDK-v2.0.14/
+
+cd install/
+
+sudo chmod +x install.sh 
+
+sudo ./install.sh
+
+cd
+
+sudo gedit ~.bashrc
+
+add these lines at the end of .bashrc
+export ASTRA_SDK_INCLUDE=/home/pkumars/AstraSDK-v2.0.14/install/include
+export ASTRA_SDK_LIB=/home/pkumars/AstraSDK-v2.0.14/install/lib
+
+save and close
+
+cd AstraSDK-v2.0.14/samples/
+
+mkdir build
+
+cd build
+
+sudo apt-get install gcc-5
+
+sudo apt-get install cmake
+
+sudo apt-get install libsfml-dev 
+
+cmake ..
+
+make -j$(nproc) # will use all the cores for compilation
+
+./bin/SimpleBodyViewer-SFML
+
+
+# debug mode
+cd ..
+mkdir Debug
+cd Debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make -j$(nproc)
+
+./bin/SimpleBodyViewer-SFML
+
+# Release Mode
+cd ..
+mkdir Release
+cd Release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make -j$(nproc)
+
+./bin/SimpleBodyViewer-SFML
+
